@@ -18,9 +18,8 @@ import models.*;
 public class HomeController extends Controller {
 
     private FormFactory formFactory;
-
     @Inject
-    public HomeController(FormFactory f) {
+    public HomeController(FormFactory f){
         this.formFactory = f;
     }
 
@@ -45,25 +44,25 @@ public class HomeController extends Controller {
     }
 
     public Result addProductSubmit(){
-        Form<Product> newProductForm = formFactory.form(Product.class).bindFromRequest();
 
+        Form<Product> newProductForm = formFactory.form(Product.class).bindFromRequest();
         if(newProductForm.hasErrors()){
             return badRequest(addProduct.render(newProductForm));
         }
         Product newProduct = newProductForm.get();
-
         newProduct.save();
-
-        flash("success", "Product" + newProduct.getName() +" has been created");
+        flash("success", "Product" + newProduct.getName() + " has been created");
 
         return redirect(controllers.routes.HomeController.products());
+
     }
 
     public Result deleteProduct(Long id){
         Product.find.ref(id).delete();
-        flash("success", "Product has been deleted");
+        flash("success", "product has been deleted");
         return redirect(routes.HomeController.products());
     }
+
 }
 
 

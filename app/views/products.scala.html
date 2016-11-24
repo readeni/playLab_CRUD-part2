@@ -10,13 +10,11 @@
         </div>
       </div>
       <div class="col-sm-10">
-
           @if(flash.containsKey("success")){
-              <div class="alert alert-success">
+              <div class ="alert alert-success">
                   @flash.get("success")
               </div>
           }
-
         <table class="table table-bordered table-hover table-condensed">
           <thead>
           <!-- The header row-->
@@ -38,12 +36,10 @@
               <td>@p.getDescription</td>
               <td>@p.getStock</td>
               <td>&euro; @("%.2f".format(p.getPrice))</td>
-              <td>
-                  <a href="@routes.HomeController.deleteProduct(p.getId)" class="btn-xs btn-danger"
-                  onclick="return confirmDel();">
-                      <span classs="glyphicon glyphicon-trash"></span>
-                  </a>
-              </td>
+                        <a href="@routes.HomeController.deleteProduct(p.getId)" class="btn-xs btn-danger"
+                            oneclick="return confirmDel();">
+                           <span class="glyphicon glyphicon-trash"></span>
+                        </a>
 					</tr>
 					} <!-- End of For loop -->
           </tbody>
@@ -55,10 +51,9 @@
           </p>
       </div>
   </div>
-
     <script>
-        function confirmDel(){
-            return confirm('Are your Sure?');
+        function confrimDel(){
+            return confirm('Are you sure?');
         }
     </script>
   <!-- End of content for main -->
